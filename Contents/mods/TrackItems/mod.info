@@ -5,6 +5,7 @@ poster=poster.png
 poster=custom_items.png
 poster=info_panel.png
 icon=icon.png
+url=https://github.com/amescodes/PZTrackItems
 versionMin=41.78.16
 authors=amescodes
 modversion=41.1.0.0
