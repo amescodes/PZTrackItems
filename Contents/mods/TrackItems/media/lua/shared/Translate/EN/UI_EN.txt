@@ -1,0 +1,7 @@
+UI_EN = {
+    UI_TrackItemsAtTop                               = "Track Items"
+    UI_char_TrackItemsAtTop_Enable                   = "Enabled"
+    UI_char_TrackItemsAtTop_Enable_Tooltip           = "Enable tracked items showing at the top of containers."
+    UI_char_TrackItemsAtTop_Info                     = "Right-click an item to untrack and remove it from the list."
+    UI_char_TrackItemsAtTop_AddItem                  = "Track New Item"
+}

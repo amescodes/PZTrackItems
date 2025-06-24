@@ -1,0 +1,11 @@
+Sandbox_EN = {
+	Sandbox_TrackItemsAtTop                   = "Track Items At Top"
+  Sandbox_MaxItems                          = "Max Items"
+  Sandbox_MaxItems_tooltip                  = "Max number of items a player is allowed to track that will appear at top of containers and inventory."
+  Sandbox_AllowKeys                         = "Allow Keys"
+  Sandbox_AllowKeys_tooltip                 = "Enable to allow keys to be tracked."
+  Sandbox_HighlightTrackedItems             = "Highlight Tracked Items"
+  Sandbox_HighlightTrackedItems_tooltip     = "Enable highlighting of tracked items in containers and inventory."
+  Sandbox_AllowItemListSearch               = "Allow Item List Search"
+  Sandbox_AllowItemListSearch_tooltip       = "Enable to allow searching for items to track from the 'Track Items' tab in the character panel. Disable to only allow tracking items that are in the player's proximity or inventory."
+}

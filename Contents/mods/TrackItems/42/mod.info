@@ -1,0 +1,10 @@
+name=Track Items
+id=TrackItemsAtTop
+description=Track items that will always be at the top of container inventories.
+poster=poster.png
+poster=custom_items.png
+poster=info_panel.png
+icon=icon.png
+versionMin=42.0.2
+authors=amescodes
+modversion=42.1.0.0
