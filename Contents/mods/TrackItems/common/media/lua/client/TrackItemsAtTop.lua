@@ -20,6 +20,7 @@ function TrackItemsAtTop:init(player)
         -- create new mod data
         TrackItemsAtTopPrint("TrackItemsAtTop:init: creating new modData", true)
         player:getModData().TrackItemsAtTop = {}
+        TrackItemsAtTop.Items = {}
     else
         -- load mod data
         TrackItemsAtTopPrint("TrackItemsAtTop:init: loading modData", true)
@@ -114,12 +115,6 @@ function TrackItemsAtTop:ContainsItem(item)
 
     return false
 end
-
-local function onNewGame(player, square)
-    TrackItemsAtTop:init(player)
-end
-
-Events.OnNewGame.Add(onNewGame)
 
 if isDebugEnabled() then
     TrackItemsAtTop:init(getPlayer())

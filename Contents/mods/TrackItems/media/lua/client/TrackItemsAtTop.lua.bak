@@ -116,6 +116,12 @@ function TrackItemsAtTop:ContainsItem(item)
     return false
 end
 
+-- local function onNewGame(player, square)
+--     TrackItemsAtTop:init(player)
+-- end
+
+-- Events.OnNewGame.Add(onNewGame)
+
 if isDebugEnabled() then
     TrackItemsAtTop:init(getPlayer())
 end

@@ -6,6 +6,8 @@ Items being tracked can be found in the Character panel under the 'Find Items' t
 
 ![Track Items mod - search for items.](C:\Users\amesh\Zomboid\Workshop\TrackItems\Contents\mods\TrackItems\info_panel.gif)
 
+Works with custom items!
+
 ![Track Items mod - search for and track custom items.](C:\Users\amesh\Zomboid\Workshop\TrackItems\Contents\mods\TrackItems\custom_items.gif)
 
 Sandbox options included for:
@@ -15,3 +17,8 @@ Sandbox options included for:
 - Allow/disallow searching for items.
 - Show/hide highlight on tracked items. Item(s) will still appear at the top of container inventories.
 
+NOTE: Currently, certain media items are not able to be tracked. This includes VHS, CDs, and (B42) literature. This does NOT include skill books and skill magazines - you can track those.
+
+-------
+Workshop ID: 3491823085
+Mod ID: TrackItemsAtTop

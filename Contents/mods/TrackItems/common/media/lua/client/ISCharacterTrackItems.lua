@@ -18,7 +18,7 @@ end
 
 function ISCharacterTrackItems:createChildren()
     TrackItemsAtTopPrint("ISCharacterTrackItems:createChildren", true)
-    -- TrackItemsAtTop:init(self.char)
+    TrackItemsAtTop:init(self.char)
 
     self.textY = 0
     self.inputX = self:getWidth() / 2
