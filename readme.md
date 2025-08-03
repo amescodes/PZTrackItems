@@ -17,7 +17,7 @@ Sandbox options included for:
 
 NOTE: Currently, certain media items are not able to be tracked. This includes VHS, CDs, and (B42) literature. This does NOT include skill books and skill magazines - you can track those.
 
-<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="amescodes" data-color="#40DCA5" data-emoji="☕"  data-font="Comic" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/amescodes)
 
 -------
 Workshop ID: 3491823085
