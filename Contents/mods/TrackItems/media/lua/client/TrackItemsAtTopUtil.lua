@@ -8,20 +8,28 @@ function TrackItemsAtTopPrint(txt, debugOnly)
 end
 
 function isMovable(item)
-    if instanceof(item, "Moveable") then return true end
-    return false
+    return item:getType() == Type.Moveable
 end
 
 function isEntertainment(item)
-    return item:getDisplayCategory() == getText("IGUI_ItemCat_Entertainment") or item:getSaveType() == getText("IGUI_ItemCat_Entertainment")
+    return item:getDisplayCategory() == "Entertainment"
 end
-
 function isKey(item)
-    return ((instanceof(item, "Key")) and not item:isPadlock() and not item:isDigitalPadlock()) or instanceof(item, "KeyRing")
+    if item:getFullName() == "Base.KeyRing" then return true end
+
+    local t = item:getType()
+    if t == Type.Key then
+        local i = instanceItem(item)
+        return not i:isPadlock() and not i:isDigitalPadlock()
+    end
+    return false
 end
 
 function isValidItem(item)
-    return not item == nil
+    if (instanceof(item, "InventoryItem")) then
+        item = item:getScriptItem()
+    end
+    return item
         and not isMovable(item)
         and not isEntertainment(item)
         and (not isKey(item) or SandboxVars.TrackItemsAtTop.AllowKeys)

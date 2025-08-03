@@ -8,35 +8,57 @@ function TrackItemsAtTopPrint(txt, debugOnly)
 end
 
 function isMovable(item)
-    if instanceof(item, "Moveable") then return true end
-    return false
+    return item:getType() == Type.Moveable
 end
 
 function isEntertainment(item)
-    return item:getDisplayCategory() == getText("IGUI_ItemCat_Entertainment") or item:getSaveType() == getText("IGUI_ItemCat_Entertainment")
+    return item:getDisplayCategory() == "Entertainment"
 end
 
 --B42 - only allow skill books and gardening packets Literature items
 function isDisallowedLiterature(item)
-    -- local sBook = string.gsub(getText("IGUI_ItemCat_SkillBook"), "%s+", "")
-    -- local gBook = string.gsub(getText("IGUI_ItemCat_Gardening"), "%s+", "")
-    local x = item:getDisplayCategory()
-    local y = item:getScriptItem()
-    local z = y:getTeachedRecipes()
-    local a = item:IsLiterature()
-    return item:IsLiterature()
-        and not (item:getDisplayCategory() == "SkillBook"
+    return item:getType() == Type.Literature
+        and (item:isMementoLoot()
+        or (not (item:getDisplayCategory() == "SkillBook"
+        or item:getTeachedRecipes()
                 or item:getDisplayCategory() == "Gardening"
-                or (z and z:size() > 0)
-                )
+                )))
+end
+
+function hasOwner(item)
+    return item:getTags():contains("ApplyOwnerName")
 end
 
 function isKey(item)
-    return ((instanceof(item, "Key")) and not item:isPadlock() and not item:isDigitalPadlock()) or instanceof(item, "KeyRing")
+    local t = item:getType()
+    if item:getTags():contains("KeyRing") then
+        return not item:isMementoLoot() or item:getDisplayCategory() == "Container"
+    end
+    if t == Type.Key then
+        local i = instanceItem(item)
+        return not i:isPadlock() and not i:isDigitalPadlock()
+    end
+    return false
 end
 
 function isValidItem(item)
+    if (instanceof(item, "InventoryItem")) then
+        item = item:getScriptItem()
+    end
+    if item then
+        local x = item:getDisplayCategory()
+        local t = item:getType()
+        local z = item:getTeachedRecipes()
+        local m = item:isMementoLoot()
+
+        local m2 =  isMovable(item)
+        local e2 =  isEntertainment(item)
+        local l2 =  isDisallowedLiterature(item)
+        local k =  isKey(item)
+        local o =  hasOwner(item)
+    end
     return item
+        and not hasOwner(item)
         and not isMovable(item)
         and not isEntertainment(item)
         and not isDisallowedLiterature(item)

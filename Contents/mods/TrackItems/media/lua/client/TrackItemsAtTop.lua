@@ -43,17 +43,19 @@ function TrackItemsAtTop:saveItems()
 end
 
 function TrackItemsAtTop:TrackOrUntrackItem(item)
-    local itemType = item:getFullType()
+    if (instanceof(item, "InventoryItem")) then
+        item = item:getScriptItem()
+    end
+
+    local itemType = item:getFullName()
     if self:UntrackItem(itemType) then
         return
     end
-    self:TrackItem(item)
+    self:TrackItem(itemType)
 end
 
-function TrackItemsAtTop:TrackItem(item)
+function TrackItemsAtTop:TrackItem(itemType)
     if TrackItemsAtTop.Items and #TrackItemsAtTop.Items >= SandboxVars.TrackItemsAtTop.MaxItems then return end
-
-    local itemType = item:getFullType()
 
     TrackItemsAtTopPrint("TrackItemsAtTop:TrackItem: looking for item type: " .. itemType, true)
 
@@ -105,8 +107,10 @@ function TrackItemsAtTop:ContainsItem(item)
     if not item then
         return false
     end
-
-    local itemType = item:getFullType()
+    if (instanceof(item, "InventoryItem")) then
+        item = item:getScriptItem()
+    end
+    local itemType = item:getFullName()
     for _, it in ipairs(TrackItemsAtTop.Items) do
         if it == itemType then
             return true

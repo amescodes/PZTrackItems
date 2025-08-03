@@ -23,11 +23,8 @@ local function getZomboidItemsList()
     local finalItems = {}
     for i = 0, amount do
         local item = allItems:get(i)
-        if item and not item:getObsolete() and not item:isHidden() then
-            item = instanceItem(item)
-            if isValidItem(item) then
-                table.insert(finalItems,item)
-            end
+        if item and not item:getObsolete() and not item:isHidden() and isValidItem(item) then
+            table.insert(finalItems,item)
         end
     end
 
@@ -50,8 +47,12 @@ function ISTrackItemsListWindow:filter(filterText)
             if item then
                 if count < limit then
                     if not TrackItemsAtTop:ContainsItem(item)
-                    and ((not filterText or filterText == "") or string.contains(string.lower(item:getDisplayName()), string.lower(filterText)) or string.contains(string.lower(item:getFullType()), string.lower(filterText))) then
-                        local type = item:getFullType()
+                    and (
+                        (not filterText or filterText == "")
+                        or string.contains(string.lower(item:getDisplayName()), string.lower(filterText))
+                        or string.contains(string.lower(item:getFullName()), string.lower(filterText))
+                    ) then
+                        local type = item:getFullName()
                         self.items:addItem(type, item)
                         count = count + 1
                     end
@@ -62,6 +63,16 @@ function ISTrackItemsListWindow:filter(filterText)
     
     local label = getText("IGUI_TrackItems_ShowingInSearch") .. " " .. count .. " " .. getText("IGUI_TrackItems_Items")
     self.totalFound:setName(label)
+end
+
+local function getItemTexture(item)
+    local icon = item.item:getIcon()
+    if item.item:getIconsForTexture() and not item.item:getIconsForTexture():isEmpty() then
+        icon = item.item:getIconsForTexture():get(0)
+    end
+    if icon then
+        return getTexture("Item_" .. icon)
+    end
 end
 
 function ISTrackItemsListWindow:doDrawItem(y, item, alt)
@@ -86,17 +97,20 @@ function ISTrackItemsListWindow:doDrawItem(y, item, alt)
         self:drawRect(0, (y), self:getWidth(), item.height - 1, 0.3, 0.7, 0.35, 0.15)
     end
 
-    self:drawText(item.item:getName(), 32, y + 10, 1, 1, 1, a, UIFont.Small)
-    self:drawTextureScaledAspect(item.item:getTex(), 8, y + 8, 20, 20, 1, 1, 1, 1)
+    local texture = getItemTexture(item)
+    self:drawText(item.item:getDisplayName(), 32, y + 10, 1, 1, 1, a, UIFont.Small)
+    self:drawTextureScaledAspect(texture, 8, y + 8, 20, 20, 1, 1, 1, 1)
 
     return y + item.height
 end
 
 function ISTrackItemsListWindow:onDoubleClick(item)
     if item then
-        TrackItemsAtTop:TrackItem(item)
+        local itemType = item:getFullName()
+        TrackItemsAtTop:TrackItem(itemType)
         charTrackItemsHandle:updateTrackedItems()
         ISInventoryPage.dirtyUI()
+        self.filterEntry:setText("")
     end
     self:close()
 end
@@ -150,7 +164,7 @@ function ISTrackItemsListWindow:createChildren()
                 if item then
                     local containsItem = TrackItemsAtTop:ContainsItem(item)
                     if not containsItem then
-                        local type = item:getFullType()
+                        local type = item:getFullName()
                         self.items:addItem(type, item)
                     end
                     if count >= limit then
@@ -184,9 +198,11 @@ function ISTrackItemsListWindow:trackButton(button)
     local item = self.items.items[rowIndex]
     item = item["item"]
     if item then
-        TrackItemsAtTop:TrackItem(item)
+        local itemType = item:getFullName()
+        TrackItemsAtTop:TrackItem(itemType)
         charTrackItemsHandle:updateTrackedItems()
         ISInventoryPage.dirtyUI()
+        self.filterEntry:setText("")
     end
 
     self:close()

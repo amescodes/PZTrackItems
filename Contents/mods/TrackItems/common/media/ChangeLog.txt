@@ -1,0 +1,13 @@
+[ 8/3/25 ]
+- Remove most instanceItem calls to prevent errors from custom mods stopping the item search window from populating.
+- Fix bug where skill books and magazines were not able to be tracked.
+- Add support for tracking memento key rings even when Allow Keys is off.
+- Increase maximum amount that Max Items sandbox settings can be to 250 (may cause performance issues.)
+- Add support for Chuckleberry Finn Mod Update and Alert system.
+[ ------ ]
+
+[ ALERT_CONFIG ]
+link1 = Buymeacoffee = https://steamcommunity.com/linkfilter/?u=https://buymeacoffee.com/amescodes,
+link2 = Workshop = https://steamcommunity.com/id/ames_games/myworkshopfiles/?appid=108600,
+link3 = Github = https://steamcommunity.com/linkfilter/?u=https://github.com/amescodes/PZTrackItems
+[ ------ ]
