@@ -110,8 +110,9 @@ function ISCharacterTrackItems:render()
     local txt = getText("UI_char_TrackItemsAtTop_Info")
     local maxWid = getTextManager():MeasureStringX(UIFont.Small, txt) + (self.textX * 2)
     self:setWidthAndParentWidth(math.max(self.width, maxWid))
-
-    self.addItemButton.enable = TrackItemsAtTop.Items and #TrackItemsAtTop.Items < SandboxVars.TrackItemsAtTop.MaxItems
+    if self.addItemButton then
+        self.addItemButton.enable = TrackItemsAtTop.Items and #TrackItemsAtTop.Items < SandboxVars.TrackItemsAtTop.MaxItems
+    end
 end
 
 function ISCharacterTrackItems:new(x, y, width, height, playerNum)
@@ -206,9 +207,11 @@ function ISCharacterTrackItems:addItemToBox(itemType, id)
 
     local pad = 5
     rectBox["item"] = ISImage:new(pad, pad, iWid, iHgt,tex)
+    rectBox["item"].scaledWidth = iWid
+    rectBox["item"].scaledHeight = iHgt
     rectBox["item"]:initialise()
     makeOnRightMouseUp(rectBox["item"], self.playerNum, itemType)
-    rectBox["item"].mouseovertext = item.name
+    rectBox["item"].mouseovertext = item:getDisplayName()
     rectBox:addChild(rectBox["item"])
 end
 

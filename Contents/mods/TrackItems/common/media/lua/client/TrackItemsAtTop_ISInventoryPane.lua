@@ -14,32 +14,6 @@ function ISInventoryPane:renderdetails(doDragged)
     end
 end
 
--- local old_ISInventoryPane_rendericons = ISInventoryPane.rendericons
--- function ISInventoryPane:rendericons()
---     old_ISInventoryPane_rendericons(self)
--- 	local xpad = 10
--- 	local ypad = 10
--- 	local iw = 40
--- 	local ih = 40
--- 	local xmax = math.floor((self.width - (xpad * 2)) / iw)
--- 	local ymax = math.floor((self.height - (ypad * 2)) / ih)
--- 	local xcount = 0
--- 	local ycount = 0
-
-
---     if not TrackItemsAtTop.Enabled or doDragged or not SandboxVars.TrackItemsAtTop.HighlightTrackedItems then return end
-
---     for i, items in ipairs(self.itemslist) do
---         local item = items.items[1]
---         if TrackItemsAtTop:ContainsItem(item) then
---             local tex = item:getTex()
---             TrackItemsAtTopPrint("ISInventoryPane:rendericons: item found - updating inventory pane")
---             self:drawRect((xcount * iw) + xpad + 4, (ycount * ih) + ypad + 4, tex:getWidth(),  tex:getHeight(), 0.15, 0.95, 0.89, 0, 0.29)
---             -- self:drawTexture(item:getTex(), (xcount * iw) + xpad + 4, (ycount * ih) + ypad + 4, 0.15, 0.95, 0.89, 0, 0.29)
---         end
---     end
--- end
-
 local old_ISInventoryPane_itemSortByNameInc = ISInventoryPane.itemSortByNameInc
 ISInventoryPane.itemSortByNameInc = function(a, b)
 

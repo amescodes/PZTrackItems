@@ -24,9 +24,13 @@ local function getZomboidItemsList()
     for i = 0, amount do
         local item = allItems:get(i)
         if item and not item:getObsolete() and not item:isHidden() then
-            item = instanceItem(item)
-            if isValidItem(item) then
-                table.insert(finalItems,item)
+            local c = item:getDisplayCategory()
+            local i = item:getIcon()
+            local t = item:getNormalTexture()
+
+            local itemInstance = instanceItem(item)
+            if isValidItem(itemInstance) then
+                table.insert(finalItems,itemInstance)
             end
         end
     end
@@ -48,13 +52,13 @@ function ISTrackItemsListWindow:filter(filterText)
     if allItems then
     for _,item in ipairs(allItems) do
             if item then
-                if not TrackItemsAtTop:ContainsItem(item)
-                and ((not filterText or filterText == "") or string.contains(string.lower(item:getFullType()), filterText)) then
-                    if count <= limit then
+                if count < limit then
+                    if not TrackItemsAtTop:ContainsItem(item)
+                    and ((not filterText or filterText == "") or string.contains(string.lower(item:getDisplayName()), string.lower(filterText)) or string.contains(string.lower(item:getFullType()), string.lower(filterText))) then
                         local type = item:getFullType()
                         self.items:addItem(type, item)
+                        count = count + 1
                     end
-                    count = count + 1
                 end
             end
         end
@@ -146,10 +150,10 @@ function ISTrackItemsListWindow:createChildren()
     local count = 0
     if allItems then
         for _, item in ipairs(allItems) do
-            if item then
-                local containsItem = TrackItemsAtTop:ContainsItem(item)
-                if not containsItem then
-                    if count <= limit then
+            if count <= limit then
+                if item then
+                    local containsItem = TrackItemsAtTop:ContainsItem(item)
+                    if not containsItem then
                         local type = item:getFullType()
                         self.items:addItem(type, item)
                     end
