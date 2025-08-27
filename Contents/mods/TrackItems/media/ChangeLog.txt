@@ -4,8 +4,15 @@
 - Add support for Chuckleberry Finn Mod Update and Alert system.
 [ ------ ]
 
+
+[ 8/27/25 ]
+- Shamelessly add Ko-fi support link to Mod Update and Alert system.
+[ ------ ]
+
+
 [ ALERT_CONFIG ]
-link1 = Buymeacoffee = https://steamcommunity.com/linkfilter/?u=https://buymeacoffee.com/amescodes,
-link2 = Workshop = https://steamcommunity.com/id/ames_games/myworkshopfiles/?appid=108600,
-link3 = Github = https://steamcommunity.com/linkfilter/?u=https://github.com/amescodes/PZTrackItems
+link1 = Ko-fi = https://steamcommunity.com/linkfilter/?u=https://ko-fi.com/amescodes,
+link2 = Buymeacoffee = https://steamcommunity.com/linkfilter/?u=https://buymeacoffee.com/amescodes,
+link3 = Workshop = https://steamcommunity.com/id/ames_games/myworkshopfiles/?appid=108600,
+link4 = Github = https://steamcommunity.com/linkfilter/?u=https://github.com/amescodes/PZTrackItems
 [ ------ ]
