@@ -5,4 +5,5 @@ IGUI_EN = {
     IGUI_TrackItems_SearchItem = "Search"
     IGUI_TrackItems_ShowingInSearch = "Showing"
     IGUI_TrackItems_Items = "item(s)"
+    IGUI_TrackItems_MaxReached = "Max tracked items reached."
 }

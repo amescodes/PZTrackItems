@@ -32,7 +32,8 @@ local function TrackItemsAtTopInventoryContextMenuEntry(player, context, items)
 
         if TrackItemsAtTop.Items and #TrackItemsAtTop.Items >= SandboxVars.TrackItemsAtTop.MaxItems and not containsItem then
             trackOrUntrackOption.notAvailable = true
-            trackOrUntrackOption.tooltip = "Max tracked items reached."
+            trackOrUntrackOption.tooltip = getText("IGUI_TrackItems_MaxReached")
+            -- trackOrUntrackOption.tooltip = "Max tracked items reached."
         end
     end
 end
