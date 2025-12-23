@@ -181,7 +181,7 @@ local function makeOnRightMouseUp(boxItem, playerIndex, itemType)
         local contextMenu = ISContextMenu.get(playerIndex, (infoPanel:getX() + rect.parent:getX() + x),
             (infoPanel:getY() + rect.parent:getY() + y), 1, 1)
 
-        contextMenu:addOption("Untrack", boxItem, untrackItem, itemType)
+        contextMenu:addOption(getText("UI_char_TrackItemsAtTop_UntrackItem"), boxItem, untrackItem, itemType)
     end
 
     boxItem.onRightMouseUp = onRightMouseUp

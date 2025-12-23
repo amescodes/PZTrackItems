@@ -1,0 +1,9 @@
+IGUI_EN = {
+    IGUI_TrackItems_Total = "Total"
+    IGUI_TrackItems_TrackItem = "Track"
+    IGUI_TrackItems_UntrackItem = "Untrack"
+    IGUI_TrackItems_SearchItem = "Search"
+    IGUI_TrackItems_ShowingInSearch = "Showing"
+    IGUI_TrackItems_Items = "item(s)"
+    IGUI_TrackItems_MaxReached = "Max tracked items reached."
+}
